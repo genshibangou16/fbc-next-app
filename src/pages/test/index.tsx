@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Geist_Mono } from "next/font/google";
 import Image from "next/image";
+import styles from "./test.module.css";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -10,7 +11,8 @@ const geistMono = Geist_Mono({
 export default function TestPage() {
   return (
     <div
-      className={` ${geistMono.className} flex flex-col gap-4 items-center justify-center min-h-screen pt-16`}
+      className={`${geistMono.className} min-h-screen pt-16`}
+      id={styles.container}
     >
       <div className="w-40 h-40 relative">
         <Image
