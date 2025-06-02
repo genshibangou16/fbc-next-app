@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({
 export default function TestPage() {
   return (
     <div
-      className={` ${geistMono.className} grid  items-center justify-items-center min-h-screen`}
+      className={` ${geistMono.className} flex flex-col gap-4 items-center justify-center min-h-screen pt-16`}
     >
       <Link className="text-lg text-blue-600 hover:underline" href="/">
         Go back to Home
