@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div
-      className={`${geistMono.className} grid items-center justify-items-center min-h-screen pt-16`}
+      className={`${geistMono.className} grid items-center justify-items-center min-h-screen`}
     >
       <Link className="text-lg text-blue-600 hover:underline" href="/test">
         Go to Test Page
