@@ -48,8 +48,13 @@ export default function ForecastPage({ offices }: { offices: Offices }) {
             {reportDatetime.toLocaleString("ja-JP")}発表）
           </h1>
           <p className="whitespace-pre">{data.overview}</p>
-          <h2 className="text-xl mt-4">{data.region}の天気</h2>
-          <p className="whitespace-pre">{data.regionOverview}</p>
+
+          {data.region && (
+            <>
+              <h2 className="text-xl mt-4">{data.region}の天気</h2>
+              <p className="whitespace-pre">{data.regionOverview}</p>
+            </>
+          )}
         </>
       )}
       <Link className="text-lg text-blue-600 hover:underline" href="/">
