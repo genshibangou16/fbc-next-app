@@ -26,6 +26,9 @@ export default function Home() {
       >
         Go to Text Counter
       </Link>
+      <Link className="text-lg text-blue-600 hover:underline" href="/form">
+        Go to Form Page
+      </Link>
     </div>
   );
 }
