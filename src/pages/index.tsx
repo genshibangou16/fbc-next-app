@@ -20,6 +20,12 @@ export default function Home() {
       <Link className="text-lg text-blue-600 hover:underline" href="/forecast">
         Go to Forecast Page
       </Link>
+      <Link
+        className="text-lg text-blue-600 hover:underline"
+        href="/textCounter"
+      >
+        Go to Text Counter
+      </Link>
     </div>
   );
 }
