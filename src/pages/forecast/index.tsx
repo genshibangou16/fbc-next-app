@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { ForecastResponseData } from "../api/forecast";
+import { ForecastResponseData } from "../api/forecast/[slug]";
 import Link from "next/link";
 
 const fetcher = (url: string): Promise<ForecastResponseData> =>
@@ -7,7 +7,7 @@ const fetcher = (url: string): Promise<ForecastResponseData> =>
 
 export default function ForecastPage() {
   const { data }: { data: ForecastResponseData | undefined } =
-    useSWR<ForecastResponseData>("/api/forecast", fetcher);
+    useSWR<ForecastResponseData>("/api/forecast/130000", fetcher);
   const reportDatetime = new Date(data?.reportDatetime || "");
   return (
     <div className="pt-16">

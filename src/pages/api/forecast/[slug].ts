@@ -20,9 +20,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ForecastResponseData | { error: string }>
 ) {
+  const slug = req.query.slug as string;
+
   try {
     const data: ForecastData = await fetch(
-      "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json"
+      `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${slug}.json`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
