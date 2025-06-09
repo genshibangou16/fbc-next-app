@@ -29,9 +29,14 @@ export default function StaticPage({ posts }: { posts: Post[] }) {
             <td>{post.likes_count}</td>
             <td>{post.comments_count}</td>
             <td>
-              <Link className="text-blue-600 underline" href={post.url}>
+              <a
+                className="text-blue-600 underline"
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {post.url}
-              </Link>
+              </a>
             </td>
           </tr>
         ))}
