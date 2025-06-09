@@ -1,15 +1,6 @@
-import Link from "next/link";
+import type { Qiita } from "../../components/qiita";
 
-type Post = {
-  id: string;
-  title: string;
-  url: string;
-  created_at: string;
-  comments_count: number;
-  likes_count: number;
-};
-
-export default function StaticPage({ posts }: { posts: Post[] }) {
+export default function StaticPage({ posts }: { posts: Qiita[] }) {
   return (
     <table className="mt-16">
       <thead>
@@ -47,7 +38,7 @@ export default function StaticPage({ posts }: { posts: Post[] }) {
 
 export async function getStaticProps() {
   const res = await fetch("https://qiita.com/api/v2/items?query=next.js");
-  const posts: Post[] = await res.json();
+  const posts: Qiita[] = await res.json();
   return {
     props: {
       posts,
