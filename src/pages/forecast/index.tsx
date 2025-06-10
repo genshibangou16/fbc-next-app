@@ -3,21 +3,16 @@ import { ForecastResponseData } from "../api/forecast/[slug]";
 import Link from "next/link";
 import { useAtom } from "jotai";
 import { officeIdAtom } from "@/atoms";
-
-type Office = {
-  name: string;
-  enName: string;
-  officeName: string;
-};
-
-type Offices = {
-  [key: string]: Office;
-};
+import type { ForecastArea } from "@/types/forecastArea";
 
 const fetcher = (url: string): Promise<ForecastResponseData> =>
   fetch(url).then((response) => response.json());
 
-export default function ForecastPage({ offices }: { offices: Offices }) {
+export default function ForecastPage({
+  offices,
+}: {
+  offices: ForecastArea["offices"];
+}) {
   const [officeId, setOfficeId] = useAtom<string>(officeIdAtom);
   const { data }: { data: ForecastResponseData | undefined } =
     useSWR<ForecastResponseData>(`/api/forecast/${officeId}`, fetcher);
@@ -66,9 +61,8 @@ export default function ForecastPage({ offices }: { offices: Offices }) {
 
 export async function getStaticProps() {
   const res = await fetch("https://www.jma.go.jp/bosai/common/const/area.json");
-  const offices: Offices = await res.json().then((data) => {
-    return data.offices as Offices;
-  });
+  const forecastArea: ForecastArea = await res.json();
+  const offices = forecastArea.offices;
   return {
     props: {
       offices,
