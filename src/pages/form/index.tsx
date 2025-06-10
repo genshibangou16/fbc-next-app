@@ -14,7 +14,7 @@ const schema = z
     localSpecialtyName: z.string().min(1, "Local specialty is required"),
     localSpecialtyPrice: z.coerce
       .number()
-      .min(0, "Price must be a positive number"),
+      .min(1, "Price must be a positive number"),
   })
   .refine((data) => data.email === data.confirmEmail, {
     message: "Emails must match",
