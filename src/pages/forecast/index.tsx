@@ -6,11 +6,18 @@ const fetcher = (url: string): Promise<ForecastResponseData> =>
   fetch(url).then((response) => response.json());
 
 export default function ForecastPage() {
-  const { data }: { data: ForecastResponseData | undefined } =
-    useSWR<ForecastResponseData>("/api/forecast/130000", fetcher);
+  const { data, error } = useSWR<ForecastResponseData>(
+    "/api/forecast/130000",
+    fetcher
+  );
   const reportDatetime = new Date(data?.reportDatetime || "");
   return (
     <div className="pt-16">
+      {error && (
+        <div className="text-red-500">
+          エラーが発生しました: {error.message}
+        </div>
+      )}
       {data && (
         <>
           <h1 className="text-2xl">
