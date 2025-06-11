@@ -7,6 +7,12 @@ describe("useTextCounter", () => {
     expect(result.current.text).toBe("");
   });
 
+  it("should initialize with custom value", () => {
+    const initialValue = "Initial text";
+    const { result } = renderHook(() => useTextCounter(initialValue));
+    expect(result.current.text).toBe(initialValue);
+  });
+
   it("should update text on handleChange", () => {
     const { result } = renderHook(() => useTextCounter());
     const newText = "Hello, World!";
