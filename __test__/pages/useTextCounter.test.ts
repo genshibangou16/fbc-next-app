@@ -12,9 +12,7 @@ describe("useTextCounter", () => {
     const newText = "Hello, World!";
 
     act(() => {
-      result.current.handleChange({
-        target: { value: newText },
-      } as React.ChangeEvent<HTMLTextAreaElement>);
+      result.current.handleChange(newText);
     });
 
     expect(result.current.text).toBe(newText);
@@ -25,9 +23,7 @@ describe("useTextCounter", () => {
     const newText = "Hello, World!";
 
     act(() => {
-      result.current.handleChange({
-        target: { value: newText },
-      } as React.ChangeEvent<HTMLTextAreaElement>);
+      result.current.handleChange(newText);
     });
 
     expect(result.current.getCount()).toBe(newText.length);
