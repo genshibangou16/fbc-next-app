@@ -14,8 +14,10 @@ export default function ForecastPage({
   offices: ForecastArea["offices"];
 }) {
   const [officeId, setOfficeId] = useAtom<string>(officeIdAtom);
-  const { data, error }: { data: ForecastResponseData | undefined } =
-    useSWR<ForecastResponseData>(`/api/forecast/${officeId}`, fetcher);
+  const { data, error } = useSWR<ForecastResponseData>(
+    `/api/forecast/${officeId}`,
+    fetcher
+  );
   const reportDatetime = new Date(data?.reportDatetime || "");
   return (
     <div className="pt-16">
