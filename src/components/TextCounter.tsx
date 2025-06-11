@@ -8,7 +8,7 @@ export default function TextCounter() {
       <textarea
         className="border border-gray-300 p-2 rounded"
         value={text}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.value)}
         rows={10}
         cols={30}
       ></textarea>
