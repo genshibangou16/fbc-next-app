@@ -14,11 +14,16 @@ export default function ForecastPage({
   offices: ForecastArea["offices"];
 }) {
   const [officeId, setOfficeId] = useAtom<string>(officeIdAtom);
-  const { data }: { data: ForecastResponseData | undefined } =
+  const { data, error }: { data: ForecastResponseData | undefined } =
     useSWR<ForecastResponseData>(`/api/forecast/${officeId}`, fetcher);
   const reportDatetime = new Date(data?.reportDatetime || "");
   return (
     <div className="pt-16">
+      {error && (
+        <div className="text-red-500">
+          エラーが発生しました: {error.message}
+        </div>
+      )}
       <div className="my-4">
         <label htmlFor="office">地域を選択してください</label>
         <select
