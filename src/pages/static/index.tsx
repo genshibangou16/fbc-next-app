@@ -1,4 +1,4 @@
-import type { Qiita } from "../../components/qiita";
+import type { Qiita } from "@/types/qiita";
 
 export default function StaticPage({ posts }: { posts: Qiita[] }) {
   return (
