@@ -4,7 +4,7 @@ export type ForecastResponseData = {
   reportDatetime: string;
   targetArea: string;
   overview: string;
-  region: string;
+  region?: string;
   regionOverview: string;
 };
 
@@ -41,8 +41,10 @@ export default async function handler(
     const responseData: ForecastResponseData = {
       reportDatetime: data.reportDatetime,
       targetArea: data.targetArea,
-      overview: textArray.slice(0, indexOfSubHeading).join("\n"),
-      region: textArray[indexOfSubHeading] || "",
+      overview: textArray
+        .slice(0, indexOfSubHeading === -1 ? undefined : indexOfSubHeading)
+        .join("\n"),
+      region: textArray[indexOfSubHeading] || undefined,
       regionOverview: textArray.slice(indexOfSubHeading + 1).join("\n"),
     };
     res.status(200).json(responseData);
