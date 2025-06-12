@@ -9,10 +9,16 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div
-      className={`${geistMono.className} grid items-center justify-items-center min-h-screen pt-16`}
+      className={`${geistMono.className} flex flex-col gap-3 justify-center items-center min-h-screen pt-16`}
     >
       <Link className="text-lg text-blue-600 hover:underline" href="/test">
         Go to Test Page
+      </Link>
+      <Link className="text-lg text-blue-600 hover:underline" href="/static">
+        Go to Static Page
+      </Link>
+      <Link className="text-lg text-blue-600 hover:underline" href="/forecast">
+        Go to Forecast Page
       </Link>
     </div>
   );
